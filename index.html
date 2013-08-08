@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6 ltie9" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 ltie9" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 ltie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Class Query</title>
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href="class.query.css" rel="stylesheet" type="text/css" media="all" />
+	<script>
+		// WP8 IE10 Fix - http://mattstow.com/responsive-design-in-ie10-on-windows-phone-8.html
+		(function() {
+			if ('-ms-user-select' in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style');
+				msViewportStyle.appendChild(document.createTextNode('@-ms-viewport{width:auto!important}'));
+				document.getElementsByTagName('head')[0].appendChild(msViewportStyle);
+			}
+		})();
+	</script>
+</head>
+
+<body>
+	
+	<h1>Creates media queries from <code>.classquery-</code> classes for elements with <code>data-classquery</code> attributes</h1>
+	<p>Also supports elements with existing classes &amp; IDs and fallback selectors for browsers that don't support media queries</p>
+	<p>Check the contents of the <code>&lt;style&gt;</code> block which gets appended to <code>&lt;head&gt;</code> for its output</p>
+	
+	<div id="baz" data-classquery="(min-width: 460px), .classquery-w460"></div>
+	<div class="foo" data-classquery="(min-width: 460px), .classquery-w460; (min-width: 600px), .classquery-w600"></div>
+	<div class="foo bar" data-classquery="(min-width: 460px), .classquery-w460; (min-width: 600px), .classquery-w600; (min-width: 740px), .classquery-w740"></div>
+	<div class="foo bar" id="baz" data-classquery="(min-width: 460px), .classquery-w460; (min-width: 600px), .classquery-w600; (min-width: 740px), .classquery-w740; (min-width: 900px), .classquery-w900"></div>
+
+	<script src="class.query.min.js"></script>
+</body>
+
+</html>

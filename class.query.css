@@ -1,0 +1,41 @@
+html, body {
+	font-family: sans-serif;
+	margin: 0;
+	padding: 5px;
+}
+
+h1 {
+	font-size: 1.4em;
+	margin-top: 0;
+}
+
+code {
+	color: #009;
+}
+
+div {
+	background-color: red;
+	height: 100px;
+	margin-bottom: 10px;
+	width: 290px;
+}
+
+.classquery-w460, .ltie9 [data-classquery*=".classquery-w460"] {
+	background-color: green;
+	width: 450px;
+}
+
+.classquery-w600, .ltie9 [data-classquery*=".classquery-w600"] {
+	background-color: blue;
+	width: 590px;
+}
+
+.classquery-w740, .ltie9 [data-classquery*=".classquery-w740"] {
+	background-color: orange;
+	width: 730px;
+}
+
+.classquery-w900, .ltie9 [data-classquery*=".classquery-w900"] {
+	background-color: purple;
+	width: 890px;
+}
