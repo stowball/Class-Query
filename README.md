@@ -33,7 +33,7 @@ Element queries seem like another possible solution, but they don't exist either
 1. Instead of writing media queries for elements in CSS, you write the styles as a generic class, prefixed with `.classquery-`
 2. In your markup, you add a simple media query-like syntax in a `[data-classquery]` attribute for when you want it to apply, such as `[data-classquery="(max-width: 520px), .classquery-linearise-table-all"]`, which would appy the declarations of the `.classquery-linearise-table-all` class at the `@media (max-width: 520px)` breakpoint for that element.
 3. Include the tiny (~1 KB minified & gzipped) vanilla JavaScript class.query.js before the closing `</body>`.
-4. Voila! The script will loop through all of your `[data-classquery]` elements, give them a unique `[data-classquery-id]` and write the relevant media queries in a new `<style>` block in the head.
+4. Voila! The script will loop through all of your `[data-classquery]` elements, give them a unique `[data-classquery-id]` and write the relevant media queries in a new `<style>` block in the head. If there aren't any `[data-classquery]` elements on the page, then it does nothing.
 
 If your elements already have IDs and classes applied, these will be added to the new media query selector to combat any specificity issues.
 
@@ -77,6 +77,8 @@ If you created a responsive module with Class Query **and** named your classes s
 2. Coupling media queries and markup. Re-styling/re-building a site would also require changing the `[data-classquery]` values in content pages. While some may see this as an issue, we're already doing this for responsive `<audio>` and `<video>`, as well as any [PictureFill](https://github.com/scottjehl/picturefill) "picture" elements.
 
 3. It doesn't support `@import` CSS - but then, [you shouldn't be using `@import` anyway](http://www.stevesouders.com/blog/2009/04/09/dont-use-import/)…
+
+With that said, I wouldn't use Class Query to replace standard "layout" media queries. It should only be used for responsive content which can't be styled generically or prototyping with element queries.
 
 ---
 
