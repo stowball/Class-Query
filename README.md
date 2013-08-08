@@ -84,7 +84,7 @@ With that said, I wouldn't use Class Query to replace standard "layout" media qu
 
 ### OK, I'm convinced; show me!
 
-#### Here's a basic example, which would change a `<div>`s `background-colour` from red to green at 460px
+#### Here's a basic example, which would change a `<div>`'s `background-colour` from red to green at 460px
 
 ##### HTML:
 
