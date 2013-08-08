@@ -128,7 +128,7 @@ div {
 }
 ```
 
-#### And one more using media queries operators and existing IDs and classes
+#### And one more using media query operators and existing IDs and classes:
 
 ##### HTML:
 
@@ -149,9 +149,12 @@ div {
 }
 ```
 
-Minified version created with Online YUI Compressor: http://www.refresh-sf.com/yui/
+#### And the all-important live demo:
+
+**http://stowball.github.io/Class-Query/**
 
 ---
 
 Copyright (c) 2013 Matt Stow    
 Licensed under the MIT license (see LICENSE for details)
+Minified version created with Online YUI Compressor: http://www.refresh-sf.com/yui/
