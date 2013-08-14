@@ -1,5 +1,5 @@
 /*!
- * Class Query v0.1.6
+ * Class Query v0.1.7
  *
  * Creates media queries from .classquery- classes for elements with data-classquery attributes
  *
@@ -16,32 +16,31 @@
 			rule,
 			processed = [],
 			length = rules.length;
-
+		
 		for (var i = 0; i < length; i++) {
 			rule = rules[i];
-
+			
 			if (processor(rule))
 				processed.push(rule);
 		}
-
+		
 		return processed;
 	}
-
+	
 	function getRules(stylesheet) {
 		return processRules(stylesheet, function (rule) {
 			if (!rule.selectorText) {
 				return false;
 			}
 			else {
-				if (rule.selectorText.indexOf('.classquery-') === 0) {
+				if (rule.selectorText.indexOf('.classquery-') === 0)
 					return true;
-				}
 				else
 					return false;
 			}
 		});
 	}
-
+	
 	function sameOrigin(url) {
 		var loc = window.location,
 			a = doc.createElement('a');
@@ -50,15 +49,15 @@
 		
 		return a.hostname === loc.hostname && a.protocol === loc.protocol;
 	}
-
+	
 	function isInline(stylesheet) {
 		return stylesheet.ownerNode.constructor === HTMLStyleElement;
 	}
-
+	
 	function isValidExternal(stylesheet) {
 		return stylesheet.href && sameOrigin(stylesheet.href);
 	}
-
+	
 	function getStylesheets() {
 		var sheets = doc.styleSheets,
 			sheet,
@@ -71,7 +70,7 @@
 			if (isValidExternal(sheet) || isInline(sheet))
 				valid.push(sheet);
 		}
-
+		
 		return valid;
 	}
 	
@@ -80,7 +79,7 @@
 		classQuery = 'classquery',
 		$classQueries = doc.querySelectorAll('[data-' + classQuery + ']'),
 		classQueriesLength = $classQueries.length;
-		
+	
 	if (classQueriesLength === 0)
 		return;
 	
@@ -132,7 +131,7 @@
 				for (var m = 0; m < classesLength; m++) {
 					classes[m] = classes[m].trim();
 					
-					if (m % 2 === 1 && rules[l].selectorText.match(classes[m])) {
+					if (m % 2 === 1 && rules[l].selectorText.indexOf(classes[m]) > -1) {
 						selector = 	rules[l].selectorText
 									.replace(/\[/g, '\\[')
 									.replace(/\]/g, '\\]')
@@ -147,10 +146,10 @@
 						classSelector = '(' + classes[m] + ')(.*?)(,|{)';
 						classSelectorRX = new RegExp(classSelector);
 						
-						dataSelector = '[data-' + classQueryId + '="' + j + '"]' + currClass + currId + selector.match(classSelectorRX)[2];
+						dataSelector = '[data-' + classQueryId + '="' + j + '"]' + currClass + currId + selector.match(classSelectorRX)[2].replace('\s*?', '').replace(/\\/g, '');
 						
 						css += 	'@media ' + classes[m - 1] + '{' +
-								dataSelector.replace('\s*?', '').replace(/\\/g, '') + ' {' +
+								dataSelector + ' {' +
 								rules[l].cssText.replace(selectorRX, '') + '}\n';
 					}
 				}
