@@ -1,5 +1,5 @@
 /*!
- * Class Query v0.1.7
+ * Class Query v0.1.8
  *
  * Creates media queries from .classquery- classes for elements with data-classquery attributes
  *
@@ -9,7 +9,7 @@
  *
  * Licensed under the MIT license
 */
-;(function() {
+;(function(document) {
 	
 	function processRules(stylesheet, processor) {
 		var rules = stylesheet.cssRules ? stylesheet.cssRules : stylesheet.media,
@@ -43,7 +43,7 @@
 	
 	function sameOrigin(url) {
 		var loc = window.location,
-			a = doc.createElement('a');
+			a = document.createElement('a');
 		
 		a.href = url;
 		
@@ -59,7 +59,7 @@
 	}
 	
 	function getStylesheets() {
-		var sheets = doc.styleSheets,
+		var sheets = document.styleSheets,
 			sheet,
 			length = sheets.length,
 			i = 0,
@@ -74,10 +74,9 @@
 		return valid;
 	}
 	
-	var doc = document,
-		html = doc.documentElement,
+	var html = document.documentElement,
 		classQuery = 'classquery',
-		$classQueries = doc.querySelectorAll('[data-' + classQuery + ']'),
+		$classQueries = document.querySelectorAll('[data-' + classQuery + ']'),
 		classQueriesLength = $classQueries.length;
 	
 	if (classQueriesLength === 0)
@@ -157,8 +156,8 @@
 		}
 	}
 	
-	style = doc.createElement('style');
-	style.appendChild(doc.createTextNode(css));
-	doc.head.appendChild(style);
+	style = document.createElement('style');
+	style.appendChild(document.createTextNode(css));
+	document.head.appendChild(style);
 	html.className = html.className.replace(classQuery + '-init', classQuery + '-complete');
-})();
+})(document);
